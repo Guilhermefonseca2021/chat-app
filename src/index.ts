@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import http from 'http'
 import cors from 'cors'
 import dotenv from 'dotenv'
@@ -24,6 +24,9 @@ app.use(
 
 app.use(express.json());
 
-app.get('/', async (req, res) => {
+app.get('/', async (req: Request, res: Response) => {
   res.send('Hello World');
 });
+
+
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
