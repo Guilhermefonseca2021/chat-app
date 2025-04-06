@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import pool from './pool'
-import { DatabaseError } from 'pg';
+import pool from './pool';
 
 // read schema.sql
 const schema = fs.readFileSync(path.resolve(__dirname, './schema.sql'), {
@@ -18,3 +17,5 @@ const schema = fs.readFileSync(path.resolve(__dirname, './schema.sql'), {
         await pool.end();
     }
 })();
+
+module.exports

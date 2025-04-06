@@ -1,6 +1,7 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
-// dotenv.config();
+dotenv.config();
+
 const port = process.env.DB_PORT
 const NumberPORT = parseInt(port as string);
 

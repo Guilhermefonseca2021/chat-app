@@ -46,7 +46,7 @@ const roomsData = [
 
 async function insertData() {
 try {
-    const salt = await bcrypt.genSalt();
+    const salt = await bcrypt.genSalt(10);
     const adminHashedPassword = await bcrypt.hash(admin.password, salt);
     const testUserHashedPassword = await bcrypt.hash(testUser.password, salt);
 
@@ -66,13 +66,11 @@ try {
     // Insert rooms
     await Promise.all(
     roomsData.map(async (room) => {
-        // Create room by admin
         const createdRoom = await pool.query(
         'INSERT INTO rooms (name, description, created_user_id) VALUES ($1, $2, $3) RETURNING *',
         [room.name, room.description, createdAdmin.rows[0].id]
         );
 
-        // Insert user_rooms table
         await pool.query(
         'INSERT INTO user_rooms (user_id, room_id) VALUES ($1, $2)',
         [createdAdmin.rows[0].id, createdRoom.rows[0].id]
@@ -94,4 +92,4 @@ try {
 
 insertData();
 
-module.exports;
+module.exports
