@@ -1,11 +1,13 @@
-import { ChakraProvider, Heading } from '@chakra-ui/react';
-import customTheme from './theme';
+import { Heading } from '@chakra-ui/react';
+import io from 'socket.io-client';
+
+io('http://localhost:3000')
 
 function App() {
   return (
-    <ChakraProvider theme={customTheme}>
+    <div>
       <Heading>Hello World!</Heading>
-    </ChakraProvider>
+    </div>
   );
 }
 

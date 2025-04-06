@@ -1,7 +1,9 @@
-import express, { Request, Response } from 'express'
-import http from 'http'
-import cors from 'cors'
-import dotenv from 'dotenv'
+import express, { Request, Response } from 'express';
+import { Server } from "socket.io";
+import socketIoHandler from './socketIo';
+import http from 'http';
+import cors from 'cors';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -11,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:3000',
     credentials: true,
     allowedHeaders: [
       'set-cookie',
@@ -28,5 +30,13 @@ app.get('/', async (req: Request, res: Response) => {
   res.send('Hello World');
 });
 
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3333',
+    credentials: true,
+  },
+});
+
+socketIoHandler(io);
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
