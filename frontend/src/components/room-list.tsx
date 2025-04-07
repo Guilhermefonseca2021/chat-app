@@ -4,7 +4,6 @@ import {
     Button,
     Flex,
     Skeleton,
-    BoxProps,
 } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiHash } from 'react-icons/fi';
@@ -33,7 +32,6 @@ export default function RoomList() {
             justifyContent='flex-start'
             onClick={() => {
                 navigate('/all-rooms');
-                onDrawerClose && onDrawerClose();
             }}
             >
             <MdManageSearch />

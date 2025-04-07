@@ -8,7 +8,13 @@ const socketIoHandler = (io: Server) => {
         const { roomId } = data;
         socket.join(roomId);
       });
-  
+
+      socket.on('leave_chat', async (data) => { 
+        const { roomId } = data;
+
+        socket.leave(roomId);
+      });
+    
       socket.on('disconnect', () =>
         console.log(`Client disconnected with id: ${socket.id}`)
       );
