@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSocketStore } from './socket';
-import { useJoinedRoomsStore } from './joined-rooms';
-import { useCurrentRoomStore } from './current-rooms';
+import { useSocketStore } from '../store/socket';
+import { useJoinedRoomsStore } from '../store/joined-rooms';
+import { useCurrentRoomStore } from '../store/current-rooms';
 
 export const useSetCurrentRoom = () => {
   const { roomId } = useParams();
@@ -12,7 +12,7 @@ export const useSetCurrentRoom = () => {
     id: 1,
     username: 'test_user',
     image_icon: null
-  };
+  }; 
 
   const joinedRooms = useJoinedRoomsStore((state) => state.joinedRooms);
   const setCurrentRoom = useCurrentRoomStore((state) => state.setCurrentRoom);

@@ -1,6 +1,7 @@
 import { Socket } from 'socket.io-client';
 
-type ServerToClientEvents = {};
+const objt = new Object();
+type ServerToClientEvents = objt;
 
 type ClientToServerEvents = {
   join_chat: ({
