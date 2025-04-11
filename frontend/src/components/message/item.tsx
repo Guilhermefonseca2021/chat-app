@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { format, isToday, isYesterday } from 'date-fns';
-import { Flex, Text,  Box } from '@chakra-ui/react';
+import { Flex, Text, Avatar, HStack, Box } from '@chakra-ui/react';
 import defaultIcon from '../../assets/profile-icon/default.svg';
 import { LuAlignVerticalJustifyStart } from 'react-icons/lu';
 
@@ -27,7 +27,7 @@ export const MessageItem = ({
         setIconSrc(module.default);
       }); 
     };
-
+    
     fetchIcon();
   });
 
@@ -46,14 +46,17 @@ export const MessageItem = ({
     <Flex gap='10px'>
       <LuAlignVerticalJustifyStart
         name={'John Doe'}
-        // src={iconSrc}
       />
-      {/* <Avatar
-        name={'John Doe'}
-        src={iconSrc}
-        bg={'gray.300'}
-        size={{ base: 'sm', md: 'md' }}
-      /> */}
+      <HStack gap="4">
+        {/* <Avatar.Root shape="rounded" size="lg">
+          <Avatar.Fallback name="Segun Adebayo" />
+          <Avatar.Image src="https://bit.ly/sage-adebayo" />
+        </Avatar.Root> */}
+        <Avatar.Root shape="full" size="lg">
+          <Avatar.Fallback name="Random User" />
+          <Avatar.Image src={iconSrc} />
+        </Avatar.Root>
+      </HStack>
       <Box>
         <Flex gap='10px' align='center'>
           <Box fontWeight='bold' color={'purple.400'}>
