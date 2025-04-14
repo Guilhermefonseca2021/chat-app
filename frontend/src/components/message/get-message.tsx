@@ -1,6 +1,6 @@
 import { MessageType } from '@/@types/message';
-import baseServer from '../base';
 import { AxiosResponse } from 'axios';
+import baseServer from '../../_api/base'
 
 export const getMessagesApi: (
   roomId: string

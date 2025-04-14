@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, RefObject } from 'react';
 import { useParams } from 'react-router-dom';
 import { useErrorBoundary } from 'react-error-boundary';
 import { toaster } from "@/components/ui/toaster"
@@ -13,13 +13,11 @@ type MessageDisplayType = {
   message: string;
 };
 
-export const useDisplayMessages = (
-  messagesPanelRef: React.RefObject<HTMLDivElement>
-) => {
+export const useDisplayMessages = (ref: RefObject<HTMLDivElement | null>) => {
   const { roomId } = useParams();
   const { showBoundary } = useErrorBoundary();
   const socket = useSocketStore((state) => state.socket);
-
+  
   const [messages, setMessages] = useState<MessageDisplayType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -91,9 +89,9 @@ export const useDisplayMessages = (
   }, [socket, toaster]);
 
   useEffect(() => {
-    if (!messagesPanelRef.current) return;
-    messagesPanelRef.current.scrollTop = messagesPanelRef.current.scrollHeight;
-  }, [messages, messagesPanelRef]);
+    if (!ref.current) return;
+    ref.current.scrollTop = ref.current.scrollHeight;
+  }, [messages, ref]);
 
   return {
     messages,
