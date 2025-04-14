@@ -3,9 +3,9 @@ import { Flex, Heading, Text, Button } from '@chakra-ui/react';
 import { FiHash, FiUsers } from 'react-icons/fi';
 import { useCurrentRoomStore } from '@/store/current-rooms';
 
+
 export const MessageHeader = () => {
   const btnRef = useRef(null);
-
   const currentRoom = useCurrentRoomStore((state) => state.currentRoom);
 
   return (

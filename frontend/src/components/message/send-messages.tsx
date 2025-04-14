@@ -1,9 +1,9 @@
 import { KeyboardEvent } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useSocketStore } from '@/store/socket';
 import { useCurrentRoomStore } from '@/store/current-rooms';
 import { messageSchema, MessageSchemaType } from './message';
+import { useSocketStore } from '@/store/socket';
 
 export const useSendMessage = () => {
   const socket = useSocketStore((state) => state.socket);

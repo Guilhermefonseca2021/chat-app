@@ -23,7 +23,7 @@ export const useSetCurrentRoom = () => {
       const room = joinedRooms.find(
         (joinedRoom) => joinedRoom.id === selectedRoomId
       );
-
+      
       if (room) {
         setCurrentRoom(room);
       }
